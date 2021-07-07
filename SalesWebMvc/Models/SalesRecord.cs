@@ -12,13 +12,13 @@ namespace SalesWebMvc.Models
         public SaleStatus Satatus { get; set; }
 
         //SalesRecord Possui um vendedor (Saller
-        public SalesRecord Seller { get; set; }
+        public Seller Seller { get; set; }
         
         public SalesRecord()
         {
         }
 
-        public SalesRecord(int id, DateTime date, double amount, SaleStatus satatus, SalesRecord seller)
+        public SalesRecord(int id, DateTime date, double amount, SaleStatus satatus, Seller seller)
         {
             Id = id;
             Date = date;
