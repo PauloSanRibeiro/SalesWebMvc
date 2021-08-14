@@ -14,6 +14,7 @@ namespace SalesWebMvc.Models
 
         //Sallers possui um departments
         public Department Department { get; set; }
+        public int DepartmentId { get; set; }
 
         //Saller possu VARIOS (Coleção) Sales
         public ICollection<SalesRecord> Sales { get; set; } = new List<SalesRecord>();

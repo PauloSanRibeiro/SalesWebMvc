@@ -22,9 +22,7 @@
 
 <h2>@ViewData["Title"]</h2>
 
-<p>
-    <a asp-action="Create" class="btn btn-danger" >Create New</a>
-</p>
+
 
 <table class="table table-striped table-hover">
     <thead>
@@ -39,11 +37,10 @@
                 @Html.DisplayNameFor(model => model.BirthDate)
             </th>
             <th>
-
                 @Html.DisplayNameFor(model => model.BaseSalary)
             </th>
             <th>
-                Options
+
             </th>
         </tr>
     </thead>
@@ -62,8 +59,7 @@
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.BaseSalary)
-                </td>
-
+                </td> 
                 <td>
                     <a asp-action="Edit" asp-route-id="@item.Id">Edit</a>
                     <a asp-action="Details" asp-route-id="@item.Id">Details</a>
@@ -73,3 +69,7 @@
         }
     </tbody>
 </table>
+
+<p>
+    <a asp-action="Create" class="btn btn-danger">Create New</a>
+</p>
