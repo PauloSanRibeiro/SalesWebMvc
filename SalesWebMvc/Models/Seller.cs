@@ -8,16 +8,25 @@ namespace SalesWebMvc.Models
     public class Seller
     {
         public int Id { get; set; }
+
+
+        [Required(ErrorMessage = "{0} Required")]//Campo Obrigatorio
+        [StringLength(60, MinimumLength = 3, ErrorMessage = "{0} size should be between {2} and {1} ")] //Msg de erro personalizada, numero minimo e maximo de caracter
         public string Name { get; set; }
 
+        [Required(ErrorMessage = "{0} Required")]
+        [EmailAddress(ErrorMessage = "Enter a valid email")]
         [DataType(DataType.EmailAddress)]
         public string Email { get; set; }
 
+        [Required(ErrorMessage = "{0} Required")]
         [Display(Name = "Birth Date")]
         [DataType(DataType.Date)]
-        [DisplayFormat(DataFormatString = "{0:MM/dd/yyyy}")]
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}")]
         public DateTime BirthDate { get; set; }
 
+        [Required(ErrorMessage = "{0} Required")]
+        [Range(100.0, 50000.0, ErrorMessage = "{0} must be from {1} to {2}")]
         [Display(Name = "Base Salary")]
         [DisplayFormat(DataFormatString = "{0:F2}")]
         public double BaseSalary { get; set; }
@@ -25,7 +34,6 @@ namespace SalesWebMvc.Models
         //Sallers possui um departments
         public Department Department { get; set; }
         public int DepartmentId { get; set; }
-
         //Saller possu VARIOS (Coleção) Sales
         public ICollection<SalesRecord> Sales { get; set; } = new List<SalesRecord>();
 
