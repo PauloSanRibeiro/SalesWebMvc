@@ -26,7 +26,7 @@ namespace SalesWebMvc.Models
         public DateTime BirthDate { get; set; }
 
         [Required(ErrorMessage = "{0} Required")]
-        [Range(100.0, 50000.00, ErrorMessage = "{0} must be from {1} to {2}")]
+        [Range(100.0, 50000.0, ErrorMessage = "{0} must be from {1} to {2}")]
         [Display(Name = "Base Salary")]
         [DisplayFormat(DataFormatString = "{0:F2}")]
         public double BaseSalary { get; set; }
