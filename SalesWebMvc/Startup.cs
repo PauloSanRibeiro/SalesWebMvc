@@ -63,6 +63,7 @@ namespace SalesWebMvc
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+                app.UseBrowserLink();
                 seedingService.Seed(); //Em ambiente de senvolvimento popula com dados da class seedingService
             }
             else
@@ -74,6 +75,8 @@ namespace SalesWebMvc
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseCookiePolicy();
+
+            
 
             app.UseMvc(routes =>
             {
