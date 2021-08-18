@@ -2,6 +2,7 @@
 
 @{
     ViewData["Title"] = "Simple Search";
+
 }
 
 <h2>@ViewData["Title"]</h2>
@@ -46,6 +47,9 @@
                     <th>
                         @Html.DisplayNameFor(model => model.Amount)
                     </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Status)
+                    </th>
 
                 </tr>
             </thead>
@@ -57,6 +61,9 @@
                             @Html.DisplayFor(modelItem => item.Id)
                         </td>
                         <td>
+                            @Html.DisplayFor(modelItem => item.Date)
+                        </td>
+                        <td>
                             @Html.DisplayFor(modelItem => item.Seller.Name)
                         </td>
                         <td>
@@ -65,7 +72,9 @@
                         <td>
                             @Html.DisplayFor(modelItem => item.Amount)
                         </td>
-
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Status)
+                        </td>
 
                     </tr>
                 }
