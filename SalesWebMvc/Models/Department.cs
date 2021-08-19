@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace SalesWebMvc.Models
 {
@@ -9,7 +8,6 @@ namespace SalesWebMvc.Models
     {
         public int Id { get; set; }
         public string Name { get; set; }
-
         //Um Deparment para VARIOS (Coleção) vendedores(sellers)
         public ICollection<Seller> Sellers { get; set; } = new List<Seller>();
 

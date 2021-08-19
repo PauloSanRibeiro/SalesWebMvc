@@ -14,6 +14,7 @@ using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using SalesWebMvc.Data;
 using SalesWebMvc.Services;
+using SalesWebMvc.Models;
 
 namespace SalesWebMvc
 {

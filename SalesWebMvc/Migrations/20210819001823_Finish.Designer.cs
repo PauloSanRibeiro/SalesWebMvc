@@ -4,13 +4,13 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using SalesWebMvc.Data;
+using SalesWebMvc.Models;
 
 namespace SalesWebMvc.Migrations
 {
     [DbContext(typeof(SalesWebMvcContext))]
-    [Migration("20210814140323_DepartmentForeingKey")]
-    partial class DepartmentForeingKey
+    [Migration("20210819001823_Finish")]
+    partial class Finish
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -40,9 +40,9 @@ namespace SalesWebMvc.Migrations
 
                     b.Property<DateTime>("Date");
 
-                    b.Property<int>("Satatus");
-
                     b.Property<int?>("SellerId");
+
+                    b.Property<int>("Status");
 
                     b.HasKey("Id");
 
@@ -62,9 +62,12 @@ namespace SalesWebMvc.Migrations
 
                     b.Property<int>("DepartmentId");
 
-                    b.Property<string>("Email");
+                    b.Property<string>("Email")
+                        .IsRequired();
 
-                    b.Property<string>("Name");
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(60);
 
                     b.HasKey("Id");
 

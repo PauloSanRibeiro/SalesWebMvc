@@ -1,5 +1,4 @@
-﻿using SalesWebMvc.Data;
-using SalesWebMvc.Models;
+﻿using SalesWebMvc.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -43,7 +42,7 @@ namespace SalesWebMvc.Services
                 _context.Seller.Remove(obj);
                 await _context.SaveChangesAsync();
             }
-            catch(DbUpdateException e)
+            catch (DbUpdateException e)
             {
                 throw new IntegrityException(e.Message);
             }

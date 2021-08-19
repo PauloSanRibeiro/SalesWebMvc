@@ -1,14 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using SalesWebMvc.Data;
 using SalesWebMvc.Models;
-using SalesWebMvc.Models.ViewModels;
+
 
 namespace SalesWebMvc.Controllers
 {
@@ -32,13 +30,13 @@ namespace SalesWebMvc.Controllers
         {
             if (id == null)
             {
-                return RedirectToAction(nameof(Error), new { message = "Id Not Provided" });
+                return NotFound();
             }
 
             var department = await _context.Department.FirstOrDefaultAsync(m => m.Id == id);
             if (department == null)
             {
-                return RedirectToAction(nameof(Error), new { message = "Id Not Founf" });
+                return NotFound();
             }
 
             return View(department);
@@ -71,13 +69,13 @@ namespace SalesWebMvc.Controllers
         {
             if (id == null)
             {
-                return RedirectToAction(nameof(Error), new { message = "Id Not Provided" });
+                return NotFound();
             }
 
             var department = await _context.Department.FindAsync(id);
             if (department == null)
             {
-                return RedirectToAction(nameof(Error), new { message = "Id Not Found" });
+                return NotFound();
 
             }
             return View(department);
@@ -92,7 +90,7 @@ namespace SalesWebMvc.Controllers
         {
             if (id != department.Id)
             {
-                return RedirectToAction(nameof(Error), new { message = "Id Mismatcha" });
+                return NotFound();
             }
 
             if (ModelState.IsValid)
@@ -102,11 +100,11 @@ namespace SalesWebMvc.Controllers
                     _context.Update(department);
                     await _context.SaveChangesAsync();
                 }
-                catch (ApplicationException e)
+                catch (ApplicationException)
                 {
                     if (!DepartmentExists(department.Id))
                     {
-                        return RedirectToAction(nameof(Error), new { message = e.Message });
+                        return NotFound();
                     }
                     else
                     {
@@ -123,14 +121,14 @@ namespace SalesWebMvc.Controllers
         {
             if (id == null)
             {
-                return RedirectToAction(nameof(Error), new { message = "Id Not Provided" });
+                return NotFound();
             }
 
             var department = await _context.Department
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (department == null)
             {
-                return RedirectToAction(nameof(Error), new { message = "Id Not Found" });
+                return NotFound();
             }
 
             return View(department);
@@ -152,14 +150,6 @@ namespace SalesWebMvc.Controllers
             return _context.Department.Any(e => e.Id == id);
         }
 
-        public IActionResult Error(string message)
-        {
-            var viewModel = new ErrorViewModel
-            {
-                Message = message,
-                RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier
-            };
-            return View(viewModel);
-        }
+
     }
 }
